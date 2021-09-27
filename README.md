@@ -1,5 +1,6 @@
 # FXAA
-FXAA technique with DirectX 11/HLSL. Based on [Nvidia's FXAA whitepaper](https://developer.download.nvidia.com/assets/gamedev/files/sdk/11/FXAA_WhitePaper.pdf).
+FXAA technique based on [Nvidia's FXAA whitepaper](https://developer.download.nvidia.com/assets/gamedev/files/sdk/11/FXAA_WhitePaper.pdf). Using Direct3D 11, HLSL.
+
 ## What is FXAA?
 Fast approximate anti-aliasing (FXAA) is a screen-space anti-aliasing algorithm created by Timothy Lottes at Nvidia.
 
