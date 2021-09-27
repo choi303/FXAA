@@ -173,21 +173,20 @@ bool InitializeGraphics(HINSTANCE hInstance) noexcept
     swapChainDesc.Windowed = TRUE;
     swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 
-
     //Create our SwapChain
-    D3D11CreateDeviceAndSwapChain(NULL, D3D_DRIVER_TYPE_HARDWARE, NULL, NULL, NULL, NULL,
-        D3D11_SDK_VERSION, &swapChainDesc, &pChain, &pDevice, NULL, &pContext);
+    D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, NULL, nullptr, NULL,
+        D3D11_SDK_VERSION, &swapChainDesc, &pChain, &pDevice, nullptr, &pContext);
 
     //Create our BackBuffer
-    ID3D11Texture2D* BackBuffer;
-    pChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&BackBuffer);
+    wrl::ComPtr<ID3D11Texture2D> BackBuffer;
+    pChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(BackBuffer.GetAddressOf()));
 
     //Create our Render Target
-    pDevice->CreateRenderTargetView(BackBuffer, NULL, &pRtv);
+    pDevice->CreateRenderTargetView(BackBuffer.Get(), nullptr, &pRtv);
     BackBuffer->Release();
 
     //Set our Render Target
-    pContext->OMSetRenderTargets(1, pRtv.GetAddressOf(), NULL);
+    pContext->OMSetRenderTargets(1, pRtv.GetAddressOf(), nullptr);
 
     //create viewport
     D3D11_VIEWPORT vp;
@@ -243,7 +242,7 @@ bool InitScene() noexcept
 void DrawScene() noexcept
 {
     float bgColor[4] = {0.0f, 0.0f, 0.3f, 1.0f};
-    if(!FXAAEnabled)
+    if constexpr (!FXAAEnabled)
     pContext->ClearRenderTargetView(pRtv.Get(),
         bgColor);
 
@@ -257,7 +256,7 @@ void DrawScene() noexcept
 	//Vertex Buffer bind
 	gVertexBuffer->Bind(pContext.Get());
 	
-	//Shaders bind
+	//Shades bind
     gLayout->Bind(pContext.Get());
     gVS.Bind(pContext.Get());
     gPS.Bind(pContext.Get());
@@ -315,10 +314,10 @@ LRESULT CALLBACK WndProc(HWND hwnd,
     case WM_DESTROY:
         PostQuitMessage(0);
         return 0;
+    default:
+        return DefWindowProc(hwnd,
+            msg,
+            wParam,
+            lParam);
     }
-
-    return DefWindowProc(hwnd,
-        msg,
-        wParam,
-        lParam);
 }
