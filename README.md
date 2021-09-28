@@ -33,3 +33,4 @@ The downsides are that high contrast texture maps are blurred, that FXAA must be
 - Atwood, Jeff | Coding Horror (December 2011). ["What is FXAA?"](https://www.kotaku.com.au/2011/12/what-is-fxaa/)
 - Mautari, John | Radeon Pro (October 2013). ["FXAA"](https://www.radeonpro.info/features/post-processing/fxaa/)
 - [Nvidia Direct3D 11 SDK](https://developer.nvidia.com/dx11-samples) (2010).
+- [FXAA](https://en.wikipedia.org/wiki/Fast_approximate_anti-aliasing) Wikipedia page.
