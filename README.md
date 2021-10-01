@@ -28,6 +28,10 @@ The downsides are that high contrast texture maps are blurred, that FXAA must be
 
 ![18j12dpqpngjyjpg](https://user-images.githubusercontent.com/60492235/134978568-0febd082-86d0-444f-adf4-423f68dad083.jpg)
 
+## Requirements
+- DirectX 11 SDK
+- Visual Studio 2019
+
 ## References
 - Lottes, Timothy (February 2009). ["FXAA"](https://developer.download.nvidia.com/assets/gamedev/files/sdk/11/FXAA_WhitePaper.pdf) (PDF). NVIDIA. Retrieved 29 September 2012.
 - Atwood, Jeff | Coding Horror (December 2011). ["What is FXAA?"](https://www.kotaku.com.au/2011/12/what-is-fxaa/)
