@@ -18,7 +18,7 @@ struct vertex
 };
 
 //Variables
-constexpr bool FXAAEnabled = true;
+static bool FXAAEnabled = true;
 constexpr LPCTSTR WndClassName = "fxaaWindow";
 HWND hWnd = nullptr;
 constexpr int width = 1024;
@@ -255,7 +255,7 @@ bool InitScene() noexcept
 void DrawScene() noexcept
 {
     float bgColor[4] = {0.0f, 0.0f, 0.3f, 1.0f};
-    if constexpr (!FXAAEnabled)
+    if (!FXAAEnabled)
     pContext->ClearRenderTargetView(pRtv.Get(),
         bgColor);
     pContext->PSSetSamplers(0, 1, gSplr.GetAddressOf());
@@ -323,8 +323,16 @@ LRESULT CALLBACK WndProc(HWND hwnd,
         if (wParam == VK_ESCAPE) {
             DestroyWindow(hwnd);
         }
-        return 0;
+        if (wParam == 'F')
+        {
+            if (!FXAAEnabled)
+                FXAAEnabled = true;
+            else
+                FXAAEnabled = false;
+        }
 
+        return 0;
+        
     case WM_DESTROY:
         PostQuitMessage(0);
         return 0;

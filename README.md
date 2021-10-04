@@ -28,6 +28,10 @@ The downsides are that high contrast texture maps are blurred, that FXAA must be
 
 ![18j12dpqpngjyjpg](https://user-images.githubusercontent.com/60492235/134978568-0febd082-86d0-444f-adf4-423f68dad083.jpg)
 
+## Inputs
+- 'F' to FXAA on/off
+- 'ESC' to quit
+
 ## Requirements
 - DirectX 11 SDK
 - Visual Studio 2019
